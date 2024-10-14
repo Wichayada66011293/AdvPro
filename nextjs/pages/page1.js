@@ -22,7 +22,7 @@ export default function Page1() {
     event.preventDefault();
     console.log(name);
     try {
-      const response = await fetch('http://localhost:3000/page1', {
+      const response = await fetch('http://localhost:8000/api/playername/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name })

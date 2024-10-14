@@ -1,5 +1,5 @@
-fastapi[standard]
+fastapi
 uvicorn
-databases[asyncpg]
+databases[postgresql]
 pydantic
 bcrypt

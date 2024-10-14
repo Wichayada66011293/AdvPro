@@ -5,7 +5,9 @@ POSTGRES_PASSWORD = "temp"
 POSTGRES_DB = "advcompro"
 POSTGRES_HOST = "db"
 
-DATABASE_URL = "postgresql://temp:temp@localhost:5432/advFinal"
+DATABASE_URL = "postgresql://temp:temp@db:5432/advFinal"
+
+
 
 
 database = Database(DATABASE_URL)
@@ -23,13 +25,13 @@ async def disconnect_db():
 
 # Function to insert a new user into the users table
 async def insert_user(username: str, password_hash: str, email: str):
-   query = """
-   INSERT INTO users (username, password_hash, email)
-   VALUES (:username, :password_hash, :email)
-   RETURNING user_id, username, password_hash, email, created_at
-   """
-   values = {"username": username, "password_hash": password_hash, "email": email}
-   return await database.fetch_one(query=query, values=values)
+    query = """
+    INSERT INTO users (username, password_hash, email)
+    VALUES (:username, :password_hash, :email)
+    RETURNING id, username, password_hash, email, created_at
+    """
+    values = {"username": username, "password_hash": password_hash, "email": email}
+    return await database.fetch_one(query=query, values=values)
 
 
 # Function to select a user by user_id from the users table
@@ -60,5 +62,12 @@ async def update_user(user_id: int, username: str, password_hash: str, email: st
 async def delete_user(user_id: int):
    query = "DELETE FROM users WHERE user_id = :user_id RETURNING *"
    return await database.fetch_one(query=query, values={"user_id": user_id})
+
+
+async def insert_playername(name: str):
+    query = "INSERT INTO playername (name) VALUES (:name)"
+    values = {"name": name}
+    await database.execute(query=query, values=values)  # Use your database connection logic
+
 
 

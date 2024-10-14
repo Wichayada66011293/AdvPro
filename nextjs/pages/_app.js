@@ -18,21 +18,16 @@ const theme = createTheme({
   },
 });
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps, props }) {
   const router = useRouter();
   const [loading, setLoading] = React.useState(false);
   const setAppName = useBearStore((state) => state.setAppName);
-
+  const pageName = router.pathname;
   React.useEffect(() => {
+    console.log("App load", pageName, router.query);
     setLoading(true);
     setAppName("Phi Sadud");
-
-    // Simulate a loading time (e.g., when navigating to a new page)
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 500); // Adjust time as necessary
-
-    return () => clearTimeout(timer); // Clean up the timer on unmount
+    setLoading(false);
   }, [router, setAppName]);
 
   return (

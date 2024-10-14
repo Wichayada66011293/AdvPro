@@ -1,21 +1,51 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router"; // Import useRouter to handle routing
-import { Box, Typography, TextField, Button, Stack } from "@mui/material";
+import { Box, Typography, TextField, Button, Stack, Snackbar, Alert } from "@mui/material";
 
-const Login = () => {
-  const router = useRouter(); // Initialize the router
-  const [usernameOrEmail, setUsernameOrEmail] = useState("");
-  const [password, setPassword] = useState("");
+export default function AuthPage() {
+  const router = useRouter(); // Initialize useRouter for navigation
 
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent the default form submission
-    // Handle login logic here
-    console.log("Username/Email:", usernameOrEmail);
-    console.log("Password:", password);
-    // Add your authentication logic here (API call, etc.)
-    
-    // After successful login, redirect to page1
-    router.push('/page1'); // Replace '/page1' with the correct path to your page1
+  const [usernameOrEmail, setUsernameOrEmail] = useState('');
+  const [password, setPassword] = useState(''); // Added state
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
+
+  const handleSnackbarClose = () => {
+    setOpenSnackbar(false);
+  };
+
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:8000/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email_or_username: usernameOrEmail, // Using the usernameOrEmail state
+          password_hash: password, // Using the password state
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'Login failed');
+      }
+
+      const data = await response.json();
+      setSnackbarMessage('Login successful!');
+      setSnackbarSeverity('success');
+      setOpenSnackbar(true);
+
+      // Navigate to dashboard or main page after login
+      router.push('/page1'); // Example redirect to a dashboard page
+    } catch (error) {
+      setSnackbarMessage(error.message);
+      setSnackbarSeverity('error');
+      setOpenSnackbar(true);
+    }
   };
 
   return (
@@ -23,24 +53,26 @@ const Login = () => {
       sx={{ 
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center', // Center items vertically
-        alignItems: 'center', // Center items horizontally
-        width: '100%', // Full width
-        height: '100vh', // Full height of the viewport
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: '100vh',
         textAlign: "center",
-        backgroundImage: 'url("/image/BG.png")', // Path to your background image
-        backgroundSize: '70%', // Set the background image size to 70%
-        backgroundPosition: 'center', // Center the background image
-        backgroundColor : '#CFD7E5' ,
-        backgroundRepeat: 'no-repeat', // Prevent background from repeating
+        backgroundImage: 'url("/image/BG.png")',
+        backgroundSize: '70%',
+        backgroundPosition: 'center',
+        backgroundColor : '#CFD7E5',
+        backgroundRepeat: 'no-repeat',
         fontFamily: 'FC Knomphing Regular, Noto Sans Thai, sans-serif',
-        color: 'black' // Text color for visibility
+        color: 'black'
       }}
     >
       <Typography variant="h4" component="h1" gutterBottom>
         Login Page
       </Typography>
-      <form onSubmit={handleSubmit} style={{ marginTop: "20px" }}>
+
+      {/* Login Form */}
+      <form onSubmit={handleLoginSubmit} style={{ marginTop: "20px" }}>
         <Stack spacing={2} sx={{ maxWidth: 400, mx: "auto" }}>
           <TextField
             label="Username or Email"
@@ -48,7 +80,7 @@ const Login = () => {
             value={usernameOrEmail}
             onChange={(e) => setUsernameOrEmail(e.target.value)}
             required
-            sx={{ backgroundColor: '#fff' }} // Set background color for input
+            sx={{ backgroundColor: '#fff' }}
           />
           <TextField
             label="Password"
@@ -57,7 +89,7 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            sx={{ backgroundColor: '#fff' }} // Set background color for input
+            sx={{ backgroundColor: '#fff' }}
           />
           <Button 
             variant="contained" 
@@ -72,10 +104,17 @@ const Login = () => {
           </Button>
         </Stack>
       </form>
+
+      {/* Snackbar for alerts */}
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+      >
+        <Alert onClose={handleSnackbarClose} severity={snackbarSeverity}>
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </Box>
   );
-};
-
-export default Login;
-
-
+}

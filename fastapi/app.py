@@ -1,21 +1,50 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, APIRouter, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from database import connect_db, disconnect_db
-from routes.users import router
+from pydantic import BaseModel
+from typing import Optional
+from datetime import datetime
+from database import *  # Make sure your database functions are imported
+from routes import users
 
+
+router = APIRouter()
 app = FastAPI()
 
-# CORS configuration
+app.include_router(users.router, prefix="/api/users")
+
+from pydantic import BaseModel
+
+class LoginRequest(BaseModel):
+    email_or_username: str
+    password_hash: str
+
+class UserCreate(BaseModel):
+    username: str
+    password_hash: str
+    email: str
+
+class User(BaseModel):
+    user_id: int
+    username: str
+    password_hash: str
+    email: str
+    created_at: datetime
+
+# Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins for testing, change it in production
+    allow_origins=["http://localhost:3000"],  # Allow your Next.js app
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Include the router
-app.include_router(router, prefix="/api")
+@router.post("/users/create")
+async def create_user(user: UserCreate):
+    result = await insert_user(user.username, user.password_hash, user.email)
+    return result
+
+app.include_router(router, prefix="/api", tags=["users"])
 
 @app.on_event("startup")
 async def startup():
