@@ -20,7 +20,7 @@ export default function Test() {
 
       return () => clearTimeout(timer); // Cleanup timer on component unmount
     } else {
-      // Optional: Navigate to a new page after the last text is displayed
+      // Navigate to a new page after the last text is displayed
       const timer = setTimeout(() => {
         router.push('/page25'); // Adjust the page you want to navigate to
       }, 3000); // Delay navigation after last text
@@ -53,6 +53,7 @@ export default function Test() {
         color: 'black', // Set text color for contrast
         textAlign: 'center', // Center the text
         padding: '20px', // Add some padding
+        position: 'relative', // Set position to relative for absolute children
       }}
     >
       {texts.map((text, index) => (
@@ -74,4 +75,3 @@ export default function Test() {
     </Box>
   );
 }
-

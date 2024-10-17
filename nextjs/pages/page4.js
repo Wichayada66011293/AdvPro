@@ -10,34 +10,38 @@ export default function Test() {
 
   // Array of texts to display
   const texts = [
-    "บทที่ 1",
-    "ชั้น 25"
+    "บทที่ 1", // "Chapter 1" in Thai
+    "ชั้น 25"   // "25th Floor" in Thai
   ];
 
   // Function to handle navigation to Page5
-  const handleGoToPage4 = () => {
+  const handleGoToPage5 = () => {
     router.push('/page5'); // Navigate to Page5
   };
 
   // Effect to handle the timing of text display
   useEffect(() => {
-    if (displayedTextIndex < texts.length - 1) {
-      const timer = setTimeout(() => {
-        setFade(true); // Start fade out
-        const nextIndex = displayedTextIndex + 1;
-        setTimeout(() => {
+    const timer = setTimeout(() => {
+      setFade(true); // Start fade out
+      const nextIndex = displayedTextIndex + 1;
+      setTimeout(() => {
+        if (nextIndex < texts.length) {
           setDisplayedTextIndex(nextIndex); // Move to the next text
           setFade(false); // Reset fade for the next text
-        }, 500); // Delay for fade out effect (0.5 seconds)
-      }, 2000); // Delay of 2 seconds between texts
+        } else {
+          // If the last text has been displayed, go to Page5
+          handleGoToPage5();
+        }
+      }, 500); // Delay for fade out effect (0.5 seconds)
+    }, 2000); // Delay of 2 seconds between texts
 
-      return () => clearTimeout(timer); // Cleanup timeout on component unmount
-    }
-  }, [displayedTextIndex]);
+    // Cleanup timer if the component unmounts or if the text index changes
+    return () => clearTimeout(timer); 
+  }, [displayedTextIndex, texts.length]);
 
   return (
     <Box 
-      onClick={handleGoToPage4} 
+      onClick={handleGoToPage5} 
       sx={{ 
         cursor: 'pointer', 
         textAlign: 'center',

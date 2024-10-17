@@ -27,6 +27,9 @@ export default function Test() {
         if (nextIndex < text.length) {
           setDisplayedTextIndex(nextIndex); // Move to the next text
           setFade(false); // Reset fade for the next text
+        } else {
+          // If the last text has been displayed, go to Page3
+          handleGoToPage3();
         }
       }, 500); // Delay for fade out effect (0.5 seconds)
     }, 2000); // Delay of 2 seconds between texts
@@ -38,7 +41,7 @@ export default function Test() {
 
   return (
     <Box
-      onClick={handleGoToPage3}
+      onClick={handleGoToPage3} // Allow clicking to go to Page3
       sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -79,4 +82,3 @@ export default function Test() {
     </Box>
   );
 }
-

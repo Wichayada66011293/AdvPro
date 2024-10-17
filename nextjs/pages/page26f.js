@@ -30,18 +30,24 @@ export default function Test() {
       }}
     >
       <Box>
-        <Typography variant="h4" sx={{ 
-          mb: 2,
-          fontFamily: 'FC Knomphing, Noto Sans Thai, sans-serif',
-          fontSize: '24px',
-        }}>
+        <Typography 
+          variant="h4" 
+          sx={{ 
+            mb: 2,
+            fontFamily: 'FC Knomphing, Noto Sans Thai, sans-serif',
+            fontSize: '24px',
+          }}
+        >
           นทีมอบดอกไม้ให้คุณ
         </Typography>
-        <Typography variant="h5" sx={{ 
-          mb: 2,
-          fontFamily: 'FC Knomphing, Noto Sans Thai, sans-serif',
-          fontSize: '24px',
-        }}>
+        <Typography 
+          variant="h5" 
+          sx={{ 
+            mb: 2,
+            fontFamily: 'FC Knomphing, Noto Sans Thai, sans-serif',
+            fontSize: '24px',
+          }}
+        >
           เขาหวังว่ามันจะมอบความสุขให้คุณ แม้เพียงเล็กน้อยก็ตาม
         </Typography>
       </Box>

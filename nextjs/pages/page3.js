@@ -21,19 +21,23 @@ export default function Test() {
 
   // Effect to handle the timing of text display
   useEffect(() => {
-    if (displayedTextIndex < texts.length - 1) {
-      const timer = setTimeout(() => {
-        setFade(true); // Start fade out
-        const nextIndex = displayedTextIndex + 1;
-        setTimeout(() => {
+    const timer = setTimeout(() => {
+      setFade(true); // Start fade out
+      const nextIndex = displayedTextIndex + 1;
+      setTimeout(() => {
+        if (nextIndex < texts.length) {
           setDisplayedTextIndex(nextIndex); // Move to the next text
           setFade(false); // Reset fade for the next text
-        }, 500); // Delay for fade out effect (0.5 seconds)
-      }, 2000); // Delay of 2 seconds between texts
+        } else {
+          // If the last text has been displayed, go to Page4
+          handleGoToPage4();
+        }
+      }, 500); // Delay for fade out effect (0.5 seconds)
+    }, 2000); // Delay of 2 seconds between texts
 
-      return () => clearTimeout(timer); // Cleanup timeout on component unmount
-    }
-  }, [displayedTextIndex]);
+    // Cleanup timer if the component unmounts or if the text index changes
+    return () => clearTimeout(timer); 
+  }, [displayedTextIndex, texts.length]);
 
   return (
     <Box 

@@ -67,7 +67,7 @@ export default function Test() {
     if (floor) {
       console.log(floor); // Replace with API call to save the selected floor
       try {
-        const response = await fetch('http://localhost:3000/page7', {
+        const response = await fetch('http://localhost:8000/api/choice1/create', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ floor }) // sending the selected floor to the backend

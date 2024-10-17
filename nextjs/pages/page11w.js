@@ -82,7 +82,7 @@ export default function Test() {
             mb: 2,
           }}
         >
-          คุณนั่งรอในลิฟต์ประมาณ 5 นาที
+          คุณนั่งรอในลิฟต์ประมาณ 5 นาที {/* "You wait in the elevator for about 5 minutes." */}
         </Typography>
       )}
       {currentText === 2 && (
@@ -96,7 +96,7 @@ export default function Test() {
             mb: 2,
           }}
         >
-          .....
+          ..... {/* Placeholder text */}
         </Typography>
       )}
       {currentText === 3 && (
@@ -110,7 +110,7 @@ export default function Test() {
             mb: 2,
           }}
         >
-          ไม่มีอะไรเกิดขึ้น
+          ไม่มีอะไรเกิดขึ้น {/* "Nothing happens." */}
         </Typography>
       )}
       {currentText === 4 && (
@@ -123,10 +123,9 @@ export default function Test() {
             transition: 'opacity 1s ease-in-out',
           }}
         >
-          คุณจึงตัดสินใจ ออกเดินสำรวจ
+          คุณจึงตัดสินใจ ออกเดินสำรวจ {/* "So you decide to go out and explore." */}
         </Typography>
       )}
     </Box>
   );
 }
-

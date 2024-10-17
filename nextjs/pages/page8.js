@@ -7,9 +7,9 @@ export default function Test() {
   const [currentTextIndex, setCurrentTextIndex] = useState(0); 
   const [fade, setFade] = useState(false); // State for fade effect
   const texts = [
-    "เป็นความคิดที่ดี", 
-    "ลิฟต์เลยไปขึ้นไปชั้น 25", 
-    "ตึกมี 12 ชั้น!!"
+    "เป็นความคิดที่ดี", // "That's a good idea"
+    "ลิฟต์เลยไปขึ้นไปชั้น 25", // "The elevator goes up to the 25th floor"
+    "ตึกมี 12 ชั้น!!" // "The building has 12 floors!!"
   ]; 
 
   const handleScreenClick = () => {
@@ -81,6 +81,7 @@ export default function Test() {
     </Box>
   );
 }
+
 
 
 

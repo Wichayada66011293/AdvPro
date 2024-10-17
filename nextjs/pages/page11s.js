@@ -77,7 +77,7 @@ export default function Test() {
             mb: 2,
           }}
         >
-          คุณลองกดชั้นมั่วๆ
+          คุณลองกดชั้นมั่วๆ {/* "You try pressing the floor randomly." */}
         </Typography>
       )}
       {currentText === 2 && (
@@ -91,7 +91,7 @@ export default function Test() {
             mb: 2,
           }}
         >
-          .....
+          ..... {/* Placeholder text */}
         </Typography>
       )}
       {currentText === 3 && (
@@ -105,7 +105,7 @@ export default function Test() {
             mb: 2,
           }}
         >
-          ลิฟต์ไม่ขยับ
+          ลิฟต์ไม่ขยับ {/* "The elevator doesn't move." */}
         </Typography>
       )}
       {currentText === 4 && (
@@ -118,7 +118,7 @@ export default function Test() {
             transition: 'opacity 1s ease-in-out',
           }}
         >
-          คุณจึงตัดสินใจ ออกเดินสำรวจ
+          คุณจึงตัดสินใจ ออกเดินสำรวจ {/* "So you decide to go out and explore." */}
         </Typography>
       )}
     </Box>

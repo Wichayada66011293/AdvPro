@@ -30,23 +30,28 @@ export default function Test() {
       }}
     >
       <Box>
-        <Typography variant="h4" sx={{ 
-          mb: 2,
-          fontFamily: 'FC Knomphing, Noto Sans Thai, sans-serif',
-          fontSize: '24px',
-        }}>
+        <Typography 
+          variant="h4" 
+          sx={{ 
+            mb: 2,
+            fontFamily: 'FC Knomphing, Noto Sans Thai, sans-serif',
+            fontSize: '24px',
+          }}
+        >
           นทีมอบเข็มทิศให้คุณ
         </Typography>
-        <Typography variant="h5" sx={{ 
-          mb: 2,
-          fontFamily: 'FC Knomphing, Noto Sans Thai, sans-serif',
-          fontSize: '24px',
-        }}>
+        <Typography 
+          variant="h5" 
+          sx={{ 
+            mb: 2,
+            fontFamily: 'FC Knomphing, Noto Sans Thai, sans-serif',
+            fontSize: '24px',
+          }}
+        >
           เขาหวังว่าวันหนึ่งมันอาจช่วยนำทางได้
         </Typography>
       </Box>
     </Box>
   );
 }
-
 

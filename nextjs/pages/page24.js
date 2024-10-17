@@ -28,16 +28,17 @@ export default function YourComponent() {
       }}
     >
       <Box textAlign="center">
-        <Typography variant="h4" sx={{ mb: 2,
+        <Typography variant="h4" sx={{ 
+          mb: 2,
           fontFamily: 'FC Knomphing, Noto Sans Thai, sans-serif', // Use the same font
-          fontsize : '24'
-         }}>
+          fontSize: '24px', // Corrected property name for font size
+        }}>
           ไม่หรอก คุณเลือกไม่ได้
         </Typography>
-        <Typography variant="h5"
-          sx={{ mb: 2,
+        <Typography variant="h5" sx={{ 
+          mb: 2,
           fontFamily: 'FC Knomphing, Noto Sans Thai, sans-serif', // Use the same font
-          fontsize : '24'
+          fontSize: '24px', // Corrected property name for font size
         }}>
           จงใช้ชีวิตเพื่ออะไรก็ตามที่คุณตั้งมั่นต่อไปนะ
         </Typography>

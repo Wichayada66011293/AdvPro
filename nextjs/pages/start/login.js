@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { useRouter } from "next/router"; // Import useRouter to handle routing
+import { useRouter } from "next/router";
 import { Box, Typography, TextField, Button, Stack, Snackbar, Alert } from "@mui/material";
 
 export default function AuthPage() {
   const router = useRouter(); // Initialize useRouter for navigation
-
   const [usernameOrEmail, setUsernameOrEmail] = useState('');
-  const [password, setPassword] = useState(''); // Added state
+  const [password, setPassword] = useState('');
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
   const [snackbarSeverity, setSnackbarSeverity] = useState('success');
@@ -18,14 +17,14 @@ export default function AuthPage() {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8000/api/users/login', {
+      const response = await fetch('http://localhost:8000/api/users/login', { // Correct endpoint
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email_or_username: usernameOrEmail, // Using the usernameOrEmail state
-          password_hash: password, // Using the password state
+          email: usernameOrEmail, // Using usernameOrEmail here
+          password_hash: password, // Using password here
         }),
       });
 
@@ -38,9 +37,8 @@ export default function AuthPage() {
       setSnackbarMessage('Login successful!');
       setSnackbarSeverity('success');
       setOpenSnackbar(true);
-
-      // Navigate to dashboard or main page after login
-      router.push('/page1'); // Example redirect to a dashboard page
+      // Handle successful login (e.g., redirect)
+      router.push("/page1"); // Example navigation on successful login
     } catch (error) {
       setSnackbarMessage(error.message);
       setSnackbarSeverity('error');
@@ -75,7 +73,7 @@ export default function AuthPage() {
       <form onSubmit={handleLoginSubmit} style={{ marginTop: "20px" }}>
         <Stack spacing={2} sx={{ maxWidth: 400, mx: "auto" }}>
           <TextField
-            label="Username or Email"
+            label="Email"
             variant="outlined"
             value={usernameOrEmail}
             onChange={(e) => setUsernameOrEmail(e.target.value)}

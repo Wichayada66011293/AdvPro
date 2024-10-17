@@ -32,7 +32,7 @@ export default function Test() {
         variant="h4"
         sx={{
           fontFamily: 'FC Knomphing, Noto Sans Thai, sans-serif',
-          fontSize: '24px', // Corrected property name
+          fontSize: '24px', // Font size for the text
         }}
       >
         คุณทำเต็มที่แล้วนะ เก่งมากเลย
@@ -40,4 +40,3 @@ export default function Test() {
     </Box>
   );
 }
-

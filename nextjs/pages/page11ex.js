@@ -14,26 +14,26 @@ export default function Test() {
         setCurrentText(1);
         setVisibleText(1);
       }, 0), // Start immediately
-      setTimeout(() => setVisibleText(0), 2000), // Fade out after 1 second
+      setTimeout(() => setVisibleText(0), 2000), // Fade out after 2 seconds
 
       // Fade-in the second text and fade it out
       setTimeout(() => {
         setCurrentText(2);
         setVisibleText(2);
-      }, 3000), // Start 1.5 seconds after
-      setTimeout(() => setVisibleText(0), 4000), // Fade out after 1 second
+      }, 3000), // Start 3 seconds after
+      setTimeout(() => setVisibleText(0), 5000), // Fade out after 2 seconds
 
       // Fade-in the third text and fade it out
       setTimeout(() => {
         setCurrentText(3);
         setVisibleText(3);
-      }, 5000), // Start 3 seconds after
-      setTimeout(() => setVisibleText(0), 6000), // Fade out after 1 second
+      }, 6000), // Start 6 seconds after
+      setTimeout(() => setVisibleText(0), 8000), // Fade out after 2 seconds
 
       // Navigate to the next page
       setTimeout(() => {
         router.push('/page12'); // Navigate to page12 after the last text
-      }, 8000),
+      }, 10000),
     ];
 
     // Cleanup timers when the component unmounts
@@ -72,7 +72,7 @@ export default function Test() {
             mb: 2,
           }}
         >
-          คุณเดินไปจนสุดทาง
+          คุณเดินไปจนสุดทาง {/* "You walk to the end" */}
         </Typography>
       )}
       {currentText === 2 && (
@@ -86,7 +86,7 @@ export default function Test() {
             mb: 2,
           }}
         >
-          ....
+          .... {/* Placeholder text */}
         </Typography>
       )}
       {currentText === 3 && (
@@ -99,7 +99,7 @@ export default function Test() {
             transition: 'opacity 1s ease-in-out',
           }}
         >
-          ไม่มีใคร
+          ไม่มีใคร {/* "No one" */}
         </Typography>
       )}
     </Box>
