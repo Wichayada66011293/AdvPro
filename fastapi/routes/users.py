@@ -126,6 +126,85 @@ async def create_choice2(choice2: Choice2Create):
         print(f"Error inserting choice2: {e}")
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
+@router.post("/choice3/create", response_model=ChoiceCreate)
+async def create_choice3(choice3: ChoiceCreate):
+    try:
+        # Insert the choice into the choice3 table
+        new_choice = await insert_choice3(player_choice=choice3.player_choice)
+        return new_choice
+    except Exception as e:
+        print(f"Error inserting choice3: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+
+@router.post("/choice4/create", response_model=ChoiceCreate)
+async def create_choice4(choice4: ChoiceCreate):
+    try:
+        # Insert the choice into the choice4 table
+        new_choice = await insert_choice4(player_choice=choice4.player_choice)
+        return new_choice
+    except Exception as e:
+        print(f"Error inserting choice4: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+
+@router.post("/choice5/create", response_model=ChoiceCreate)
+async def create_choice5(choice5: ChoiceCreate):
+    try:
+        # Insert the choice into the choice5 table
+        new_choice = await insert_choice5(player_choice=choice5.player_choice)
+        return new_choice
+    except Exception as e:
+        print(f"Error inserting choice5: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+
+@router.post("/choice6/create", response_model=ChoiceCreate)
+async def create_choice6(choice6: ChoiceCreate):
+    try:
+        # Insert the choice into the choice6 table
+        new_choice = await insert_choice6(player_choice=choice6.player_choice)
+        return new_choice
+    except Exception as e:
+        print(f"Error inserting choice6: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+
+@router.post("/choice7/create", response_model=ChoiceCreate)
+async def create_choice7(choice7: ChoiceCreate):
+    try:
+        # Insert the choice into the choice7 table
+        new_choice = await insert_choice7(player_choice=choice7.player_choice)
+        return new_choice
+    except Exception as e:
+        print(f"Error inserting choice7: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+
+@router.post("/choice8/create", response_model=ChoiceCreate)
+async def create_choice8(choice8: ChoiceCreate):
+    try:
+        # Insert the choice into the choice8 table
+        new_choice = await insert_choice8(player_choice=choice8.player_choice)
+        return new_choice
+    except Exception as e:
+        print(f"Error inserting choice8: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+
+@router.post("/choice9/create", response_model=ChoiceCreate)
+async def create_choice9(choice9: ChoiceCreate):
+    try:
+        # Insert the choice into the choice9 table
+        new_choice = await insert_choice9(player_choice=choice9.player_choice)
+        return new_choice
+    except Exception as e:
+        print(f"Error inserting choice9: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+
+@router.post("/choice10/create", response_model=ChoiceCreate)
+async def create_choice10(choice10: ChoiceCreate):
+    try:
+        # Insert the choice into the choice10 table
+        new_choice = await insert_choice10(player_choice=choice10.player_choice)
+        return new_choice
+    except Exception as e:
+        print(f"Error inserting choice10: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
 
 
 

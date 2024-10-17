@@ -82,6 +82,77 @@ async def insert_choice2(player_choice: str):
     row = await database.fetch_one(query=query, values=values)
     return row
 
+async def insert_choice3(player_choice: str):
+    print(f"insert_choice3 called with player_choice='{player_choice}'")
+    query = "INSERT INTO choice3 (player_choice) VALUES (:player_choice) RETURNING *"
+    values = {'player_choice': player_choice}
+    print(f"Executing query: {query} with values: {values}")
+    
+    row = await database.fetch_one(query=query, values=values)
+    return row
+
+async def insert_choice4(player_choice: str):
+    print(f"insert_choice4 called with player_choice='{player_choice}'")
+    query = "INSERT INTO choice4 (player_choice) VALUES (:player_choice) RETURNING *"
+    values = {'player_choice': player_choice}
+    print(f"Executing query: {query} with values: {values}")
+    
+    row = await database.fetch_one(query=query, values=values)
+    return row
+
+async def insert_choice5(player_choice: str):
+    print(f"insert_choice5 called with player_choice='{player_choice}'")
+    query = "INSERT INTO choice5 (player_choice) VALUES (:player_choice) RETURNING *"
+    values = {'player_choice': player_choice}
+    print(f"Executing query: {query} with values: {values}")
+    
+    row = await database.fetch_one(query=query, values=values)
+    return row
+
+async def insert_choice6(player_choice: str):
+    print(f"insert_choice6 called with player_choice='{player_choice}'")
+    query = "INSERT INTO choice6 (player_choice) VALUES (:player_choice) RETURNING *"
+    values = {'player_choice': player_choice}
+    print(f"Executing query: {query} with values: {values}")
+    
+    row = await database.fetch_one(query=query, values=values)
+    return row
+
+async def insert_choice7(player_choice: str):
+    print(f"insert_choice7 called with player_choice='{player_choice}'")
+    query = "INSERT INTO choice7 (player_choice) VALUES (:player_choice) RETURNING *"
+    values = {'player_choice': player_choice}
+    print(f"Executing query: {query} with values: {values}")
+    
+    row = await database.fetch_one(query=query, values=values)
+    return row
+
+async def insert_choice8(player_choice: str):
+    print(f"insert_choice8 called with player_choice='{player_choice}'")
+    query = "INSERT INTO choice8 (player_choice) VALUES (:player_choice) RETURNING *"
+    values = {'player_choice': player_choice}
+    print(f"Executing query: {query} with values: {values}")
+    
+    row = await database.fetch_one(query=query, values=values)
+    return row
+
+async def insert_choice9(player_choice: str):
+    print(f"insert_choice9 called with player_choice='{player_choice}'")
+    query = "INSERT INTO choice9 (player_choice) VALUES (:player_choice) RETURNING *"
+    values = {'player_choice': player_choice}
+    print(f"Executing query: {query} with values: {values}")
+    
+    row = await database.fetch_one(query=query, values=values)
+    return row
+
+async def insert_choice10(player_choice: str):
+    print(f"insert_choice10 called with player_choice='{player_choice}'")
+    query = "INSERT INTO choice10 (player_choice) VALUES (:player_choice) RETURNING *"
+    values = {'player_choice': player_choice}
+    print(f"Executing query: {query} with values: {values}")
+    
+    row = await database.fetch_one(query=query, values=values)
+    return row
 
 
 
