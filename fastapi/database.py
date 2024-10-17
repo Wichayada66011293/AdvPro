@@ -1,4 +1,4 @@
-from databases import Database
+from database import Database
 from model import PlayerNameCreate
 
 # Database configuration
